@@ -27,7 +27,7 @@ Esc::
 Reload
 Return
 
-9::
+!d::
 MouseGetPos, x, y
 BlockInput MouseMove
 

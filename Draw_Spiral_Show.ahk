@@ -6,7 +6,7 @@ Click up
 Reload
 Return
 
-9::
+!d::
 MouseGetPos, xcenter, ycenter
 Gui, Add, Text,, Theta: 
 Gui, Add, Text,, Radius:

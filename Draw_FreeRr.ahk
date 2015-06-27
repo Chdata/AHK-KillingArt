@@ -6,7 +6,7 @@ Click up
 Reload
 Return
 
-9::
+!d::
 DrawRr(128, 8)	;"Radius" and divisions on the axes
 Return
 

@@ -9,7 +9,7 @@ SetMouseDelay 4
 Esc::Reload
 Return
 
-9::
+!d::
 {
 
 d:=0.5		;Size modifier

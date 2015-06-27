@@ -1,5 +1,5 @@
-;Parametric graph drawer
-;Draw_Parametric.ahk
+;Maurer rose drawer
+;Draw_Maurer.ahk
 ;By: Chdata
 ;2/7/2013
 

@@ -8,7 +8,7 @@ Return
 
 ;((i * 2) + 2 + i)
 
-9::
+!d::
 MouseGetPos, xcenter, ycenter
 BlockInput MouseMove
 
