@@ -31,18 +31,18 @@ Radisu:=150
 
 Loop, % 361+2
 {
-	B_Index:=A_Index-2
-	If B_Index = 0
-		Click down
-	t:=B_Index*Angle
+    B_Index:=A_Index-2
+    If B_Index = 0
+        Click down
+    t:=B_Index*Angle
 
-	r:=Radisu*Sin(Petals*t*dtr)
-	x:=r*Cos(t*dtr)
-	y:=r*Sin(t*dtr)
+    r:=Radisu*Sin(Petals*t*dtr)
+    x:=r*Cos(t*dtr)
+    y:=r*Sin(t*dtr)
 
-	mx:=Round(xcenter+x)
-	my:=Round(ycenter+(-1*y))
-	MouseMove, mx, my
+    mx:=Round(xcenter+x)
+    my:=Round(ycenter+(-1*y))
+    MouseMove, mx, my
 }
 Click up
 
@@ -50,44 +50,43 @@ MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
 Return
 
-Sgn(Val)	;Returns the sign of the value
+Sgn(Val)    ;Returns the sign of the value
 {
-Return, x < 0 ? -1 : x > 0 ? 1 : 0
-;Return, x < 0 ? -1 : !!x		;This one's actually slower than the above operation, but I like it more
+    Return, x < 0 ? -1 : x > 0 ? 1 : 0
+;Return, x < 0 ? -1 : !!x       ;This one's actually slower than the above operation, but I like it more
 }
 
 aRoot(Val)
 {
-Return Sgn(Val)*Sqrt(Abs(Val))
+    Return Sgn(Val)*Sqrt(Abs(Val))
 }
 
 /*
-;Better than those custom defined ones that go If Val > 0 ...
 Abs(Val)
 {
-Return Sgn(Val)*Val
+    Return Sgn(Val)*Val
 }
 */
 
 Csc(Theta)
 {
-Return 1/Sin(Theta)
+    Return 1/Sin(Theta)
 }
 
 Sec(Theta)
 {
-Return 1/Cos(Theta)
+    Return 1/Cos(Theta)
 }
 
 Cot(Theta)
 {
-Return 1/Tan(Theta)
+    Return 1/Tan(Theta)
 }
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

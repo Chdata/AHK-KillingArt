@@ -8,46 +8,46 @@ MouseGetPos, mX, mY
 mYtemp := mY
 mXtemp := mX
 Loop, 13 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mY += 20
 mX -= 13*20
 Loop, 4 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX += 20
 Loop, 3 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX += 20
 Loop, 4 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX -= 13*20
 mY += 20
 Loop, 3 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX += 20*7
 Loop, 3 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX -= 13*20
 mY += 20
 Loop, 2 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX += 9*20
 Loop, 2 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX -= 13*20
 mY += 20
@@ -67,19 +67,19 @@ FillSquare(mX, mY)
 mX -= 13*20
 mY += 20
 Loop, 4 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX += 100
 Loop, 4 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mX -= 13*20
 mY += 20
 Loop, 13 {
-	FillSquare(mX, mY)
-	mX += 20
+    FillSquare(mX, mY)
+    mX += 20
 }
 mY := mYtemp
 mX := mXtemp
@@ -211,34 +211,34 @@ Return
 
 FillSquare(mX, mY)
 {
-	mY2 := mY
-	mX2 := mX + 20
-	Loop 20 {
-		MouseClickDrag, L, mX, mY, mX2, mY2
-		mY -= 1
-		mY2 -= 1
-	}
-	Return
+    mY2 := mY
+    mX2 := mX + 20
+    Loop 20 {
+        MouseClickDrag, L, mX, mY, mX2, mY2
+        mY -= 1
+        mY2 -= 1
+    }
+    Return
 }
 DrawSquare(mX, mY)
 {
-	mX2 := mX + 20
-	mY2 := mY - 20
-	MouseClickDrag, L, mX, mY, mX2, mY
-	MouseClickDrag, L, mX, mY, mX, mY2
-	MouseMove, mX2, mY2
-	MouseGetPos, mX, mY
-	mX2 := mX - 20
-	mY2 := mY + 20
-	MouseClickDrag, L, mX, mY, mX-20, mY
-	MouseClickDrag, L, mX, mY, mX, mY+20
-	Return
+    mX2 := mX + 20
+    mY2 := mY - 20
+    MouseClickDrag, L, mX, mY, mX2, mY
+    MouseClickDrag, L, mX, mY, mX, mY2
+    MouseMove, mX2, mY2
+    MouseGetPos, mX, mY
+    mX2 := mX - 20
+    mY2 := mY + 20
+    MouseClickDrag, L, mX, mY, mX-20, mY
+    MouseClickDrag, L, mX, mY, mX, mY+20
+    Return
 }
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

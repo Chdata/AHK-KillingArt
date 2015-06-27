@@ -21,8 +21,8 @@ Return
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

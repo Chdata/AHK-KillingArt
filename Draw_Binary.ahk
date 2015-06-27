@@ -61,94 +61,93 @@ Return
 
 Draw(Layout, BlockSize)
 {
-  Class := GetClass()
+    Class := GetClass()
 
-  If (Class == "Progman" || Class == "WorkerW")
-  {
-  Return
-  }
-
-  BlockInput MouseMove
-
-  Len := StrLen(Layout)
-  RowSize := StrLen(StrSplit(Layout, "`n")[1])
-  Index := 0
-
-  While (Index < Len)
-  {
-  Length := 1
-  Char := GetChar(Layout, Index)
-
-  if (Char == "1")
-  {
-    While (GetChar(Layout, Index + Length) == "1")
+    If (Class == "Progman" || Class == "WorkerW")
     {
-    Length := Length + 1
+        Return
     }
 
     if (!FillRectangle(Length, BlockSize))
+    BlockInput MouseMove
+
+    Len := StrLen(Layout)
+    RowSize := StrLen(StrSplit(Layout, "`n")[1])
+    Index := 0
+
+    While (Index < Len)
     {
-    Break
+        Length := 1
+        Char := GetChar(Layout, Index)
+
+        if (Char == "1")
+        {
+            While (GetChar(Layout, Index + Length) == "1")
+            {
+                Length := Length + 1
+            }
+
+            if (!FillRectangle(Length, BlockSize))
+            {
+                Break
+            }
+        }
+        else if (Char == "0")
+        {
+            MouseMove, BlockSize, 0, 0, R
+        }
+        else
+        {
+            MouseMove, -(RowSize * BlockSize), BlockSize, 0, R
+        }
+        Index := Index + Length
     }
 
-  }
-  else if (Char == "0")
-  {
-    MouseMove, BlockSize, 0, 0, R
-  }
-  else
-  {
-    MouseMove, -(RowSize * BlockSize), BlockSize, 0, R
-  }
-
-  Index := Index + Length
-  }
-
-  BlockInput MouseMoveOff
+    BlockInput MouseMoveOff
 }
 
 FillRectangle(Width, Height)
 {
-  StartClass := GetClass()
+    StartClass := GetClass()
 
-  MouseGetPos, mX, mY
-  mY2 := mY
-  mX2 := mX + Width * Height
+    MouseGetPos, mX, mY
+    mY2 := mY
+    mX2 := mX + Width * Height
 
-  Loop %Height%
-  {
-  CurrentClass := GetClass()
+    Loop %Height%
+    {
+        CurrentClass := GetClass()
 
-  If (CurrentClass != StartClass)
-  {
-    Return false
-  }
+        If (CurrentClass != StartClass)
+        {
+            Return false
+        }
 
-  MouseClickDrag, L, mX, mY, mX2, mY2
-  mY -= 1
-  mY2 -= 1
-  }
+        MouseClickDrag, L, mX, mY, mX2, mY2
+        mY -= 1
+        mY2 -= 1
+    }
 
-  MouseMove, 0, Height - 1, 0, R
-  Return true
+    MouseMove, 0, Height - 1, 0, R
+    Return true
 }
 
 GetChar(String, Index)
 {
-  return SubStr(String, Index, 1)
+    return SubStr(String, Index, 1)
 }
 
 GetClass()
 {
-  MouseGetPos,,, Window
-  WinGetClass, Class, ahk_id %Window%
-  return Class
+    MouseGetPos,,, Window
+    WinGetClass, Class, ahk_id %Window%
+    return Class
 }
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

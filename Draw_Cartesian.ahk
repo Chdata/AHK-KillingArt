@@ -88,36 +88,35 @@ Return, x < 0 ? -1 : x > 0 ? 1 : 0
 
 aRoot(Val)
 {
-Return Sgn(Val)*Sqrt(Abs(Val))
+	Return Sgn(Val)*Sqrt(Abs(Val))
 }
 
 /*
-;Better than those custom defined ones that go If Val > 0 ...
 Abs(Val)
 {
-Return Sgn(Val)*Val
+	Return Sgn(Val)*Val
 }
 */
 
 Csc(Theta)
 {
-Return 1/Sin(Theta)
+	Return 1/Sin(Theta)
 }
 
 Sec(Theta)
 {
-Return 1/Cos(Theta)
+	Return 1/Cos(Theta)
 }
 
 Cot(Theta)
 {
-Return 1/Tan(Theta)
+	Return 1/Tan(Theta)
 }
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+	IfExist, %A_ScriptFullPath%
+		Reload
+	Else
+    	ExitApp
 }

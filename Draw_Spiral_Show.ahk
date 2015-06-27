@@ -1,5 +1,5 @@
 #SingleInstance, Force
-SetMouseDelay, 2		;Never set this to 0 or it will lol at you
+SetMouseDelay, 2        ;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen
 Esc::
 Click up
@@ -13,7 +13,7 @@ Gui, Add, Text,, Radius:
 Gui, Add, Edit, vOffset ym
 Gui, Add, Edit, vRadius
 Gui, Add, Button, Default, OK
-;Gui, Add, Button, Default, Cancel	;Note: Fix positioning
+;Gui, Add, Button, Default, Cancel  ;Note: Fix positioning
 Gui, Show,, Spiral Offsets
 Return
 
@@ -27,12 +27,12 @@ MouseMove, xcenter, ycenter
 Click down
 Loop, %Radius%
 {
-	x:=A_Index*Cos(Theta)
-	y:=A_Index*Sin(Theta)
-	mx:=Round(xcenter+x)
-	my:=Round(ycenter+y)
-	MouseMove, mx, my
-	Theta+=Offset
+    x:=A_Index*Cos(Theta)
+    y:=A_Index*Sin(Theta)
+    mx:=Round(xcenter+x)
+    my:=Round(ycenter+y)
+    MouseMove, mx, my
+    Theta+=Offset
 }
 Click up
 MouseMove, xcenter, ycenter
@@ -53,8 +53,8 @@ Return
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

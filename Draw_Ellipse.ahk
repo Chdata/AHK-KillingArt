@@ -6,12 +6,12 @@ SetBatchLines, -1
 Return
 
 !d::
-   MouseGetPos, X, Y
-   Random, I, 0, 1 ;Random ellipse invert.
-   MouseMove_Ellipse(X, Y, X+200, Y+200, 1, 0, I)
-   MouseMove_Ellipse(X+200, Y+200, X, Y+400, 1, 0, I)
-   MouseMove_Ellipse(X, Y+400, X-200, Y+200, 1, 0, I)
-   MouseMove_Ellipse(X-200, Y+200, X, Y, 1, 0, I)
+MouseGetPos, X, Y
+Random, I, 0, 1 ;Random ellipse invert.
+MouseMove_Ellipse(X, Y, X+200, Y+200, 1, 0, I)
+MouseMove_Ellipse(X+200, Y+200, X, Y+400, 1, 0, I)
+MouseMove_Ellipse(X, Y+400, X-200, Y+200, 1, 0, I)
+MouseMove_Ellipse(X-200, Y+200, X, Y, 1, 0, I)
 Return
 
 /*
@@ -33,35 +33,45 @@ Credits:          None - Lending a helping hand.
             [VxE] - For his guide to the ternary operator.
 */
 
-MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="") {
-   MouseGetPos, X0, Y0
-   If(I="")
+MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="")
+{
+    MouseGetPos, X0, Y0
+    If(I="")
       Random, I, 0, 1
-   X1 := (X1 != "") ? X1 : X0, Y1 := (Y1 != "") ? Y1 : Y0, B := Abs(X1-X2), A := Abs(Y1-Y2), H := (X1<X2) ? ((Y1<Y2) ? ((I=0) ? X1:X2):((I=0) ? X2:X1)):((Y1<Y2) ? ((I=0) ? X2:X1):((I=0) ? X1:X2)), K := (Y1<Y2) ? ((X1<X2) ? ((I=0) ? Y2:Y1):((I=0) ? Y1:Y2)):((X1<X2) ? ((I=0) ? Y1:Y2):((I=0) ? Y2:Y1)), D := A_MouseDelay
-   SetMouseDelay, 1
-   If(M)
-      BlockInput, Mouse
-   If(B > A)
-      Loop, % B / S
-      {
-         M := (X1 < X2) ? ((I=0) ? -1:1):((I=0) ? 1:-1), X := (X1 < X2) ? (X1+A_Index*S) : (X1-A_Index*S), Y := M*Sqrt(A**2*((X-H)**2/B**2-1)*-1)+K
-         MouseMove, %X%, %Y%, 0
-      }
-   Else
-      Loop, % A / S
-      {
-         M := (Y1 < Y2) ? ((I=0) ? 1:-1):((I=0) ? -1:1), Y := (Y1 < Y2) ? (Y1+A_Index*S) : (Y1-A_Index*S), X := M*Sqrt(B**2*(1-(Y-K)**2/A**2))+H
-         MouseMove, %X%, %Y%, 0
-      }
-   MouseMove, %X2%, %Y2%, 0
-   BlockInput, Off
-   SetMouseDelay, % D
+    X1 := (X1 != "") ? X1 : X0, Y1 := (Y1 != "") ? Y1 : Y0, B := Abs(X1-X2), A := Abs(Y1-Y2), H := (X1<X2) ? ((Y1<Y2) ? ((I=0) ? X1:X2):((I=0) ? X2:X1)):((Y1<Y2) ? ((I=0) ? X2:X1):((I=0) ? X1:X2)), K := (Y1<Y2) ? ((X1<X2) ? ((I=0) ? Y2:Y1):((I=0) ? Y1:Y2)):((X1<X2) ? ((I=0) ? Y1:Y2):((I=0) ? Y2:Y1)), D := A_MouseDelay
+    SetMouseDelay, 1
+
+    If(M)
+    {
+        BlockInput, Mouse
+    }
+
+    If(B > A)
+    {
+        Loop, % B / S
+        {
+            M := (X1 < X2) ? ((I=0) ? -1:1):((I=0) ? 1:-1), X := (X1 < X2) ? (X1+A_Index*S) : (X1-A_Index*S), Y := M*Sqrt(A**2*((X-H)**2/B**2-1)*-1)+K
+            MouseMove, %X%, %Y%, 0
+        }
+    }
+    Else
+    {
+        Loop, % A / S
+        {
+            M := (Y1 < Y2) ? ((I=0) ? 1:-1):((I=0) ? -1:1), Y := (Y1 < Y2) ? (Y1+A_Index*S) : (Y1-A_Index*S), X := M*Sqrt(B**2*(1-(Y-K)**2/A**2))+H
+            MouseMove, %X%, %Y%, 0
+        }
+    }
+
+    MouseMove, %X2%, %Y2%, 0
+    BlockInput, Off
+    SetMouseDelay, % D
 }
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+    IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }

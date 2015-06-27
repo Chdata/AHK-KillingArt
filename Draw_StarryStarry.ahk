@@ -19,16 +19,16 @@ Rad:=50
 
 Theta:=0
 
-Loop, % Pnt + 1			;x points to connect (In this case, 5 for a 5 pointed star)
+Loop, % Pnt + 1         ;x points to connect (In this case, 5 for a 5 pointed star)
 {
-	IF A_Index = 2
-		Click down
-	x:=Rad*Cos(Theta)
-	y:=Rad*Sin(Theta)
-	mx:=Round(xcenter+x)
-	my:=Round(ycenter+y)
-	MouseMove, mx, my
-	Theta+=(Nxt * (360 / Pnt)) * (3.14159265 / 180)
+    IF A_Index = 2
+        Click down
+    x:=Rad*Cos(Theta)
+    y:=Rad*Sin(Theta)
+    mx:=Round(xcenter+x)
+    my:=Round(ycenter+y)
+    MouseMove, mx, my
+    Theta+=(Nxt * (360 / Pnt)) * (3.14159265 / 180)
 }
 Click up
 
@@ -38,8 +38,8 @@ Return
 
 TryReload()
 {
-  IfExist, %A_ScriptFullPath%
-    Reload
-  Else
-    ExitApp
+        IfExist, %A_ScriptFullPath%
+        Reload
+    Else
+        ExitApp
 }
