@@ -1,6 +1,8 @@
 # Killing Art
 ![Seisa](seisa.png)
 
+Draw_Spiral_Show is basically my "Hello World" program from high school.
+
 To activate a program, press `Alt+D`.
 
 Most programs will immediately begin moving your mouse rapidly and clicking. Make sure you have Paint open.
