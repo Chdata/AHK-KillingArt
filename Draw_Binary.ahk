@@ -61,7 +61,6 @@ Return
 
 Draw(Layout, BlockSize)
 {
-    global StartClass := GetClass()
     PreventDesktopUsage()
 
     BlockInput MouseMove
@@ -82,7 +81,7 @@ Draw(Layout, BlockSize)
                 Length := Length + 1
             }
 
-            if (!FillRectangle(Length, BlockSize))
+            if (!FillRectangle(Length, BlockSize, GetClass()))
             {
                 Break
             }
@@ -101,10 +100,8 @@ Draw(Layout, BlockSize)
     BlockInput MouseMoveOff
 }
 
-FillRectangle(Width, Height)
+FillRectangle(Width, Height, StartClass)
 {
-    global StartClass
-
     MouseGetPos, mX, mY
     mY2 := mY
     mX2 := mX + Width * Height
