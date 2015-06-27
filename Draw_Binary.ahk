@@ -68,7 +68,6 @@ Draw(Layout, BlockSize)
         Return
     }
 
-    if (!FillRectangle(Length, BlockSize))
     BlockInput MouseMove
 
     Len := StrLen(Layout)
