@@ -61,12 +61,8 @@ Return
 
 Draw(Layout, BlockSize)
 {
-    Class := GetClass()
-
-    If (Class == "Progman" || Class == "WorkerW")
-    {
-        Return
-    }
+    global StartClass := GetClass()
+    PreventDesktopUsage()
 
     BlockInput MouseMove
 
@@ -107,7 +103,7 @@ Draw(Layout, BlockSize)
 
 FillRectangle(Width, Height)
 {
-    StartClass := GetClass()
+    global StartClass
 
     MouseGetPos, mX, mY
     mY2 := mY
@@ -141,6 +137,16 @@ GetClass()
     MouseGetPos,,, Window
     WinGetClass, Class, ahk_id %Window%
     return Class
+}
+
+PreventDesktopUsage()
+{
+    Class := GetClass()
+
+    If (Class == "Progman" || Class == "WorkerW")
+    {
+        TryReload()
+    }
 }
 
 TryReload()
