@@ -1,7 +1,7 @@
 # Killing Art
 ![Seisa](seisa.png)
 
-Draw_Spiral_Show is basically one of my first programs from high school.
+Draw_Spiral_Show is one of my first programs from high school.
 
 To activate a program, press `Alt+D`.
 
