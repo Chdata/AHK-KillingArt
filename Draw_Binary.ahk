@@ -61,6 +61,7 @@ Return
 
 Draw(Layout, BlockSize)
 {
+    StartClass := GetClass()
     PreventDesktopUsage()
 
     BlockInput MouseMove
@@ -81,14 +82,19 @@ Draw(Layout, BlockSize)
                 Length := Length + 1
             }
 
-            if (!FillRectangle(Length, BlockSize, GetClass()))
+            if (!FillRectangle(Length, BlockSize, StartClass))
             {
                 Break
             }
         }
         else if (Char == "0")
         {
-            MouseMove, BlockSize, 0, 0, R
+            While (GetChar(Layout, Index + Length) == "0")
+            {
+                Length := Length + 1
+            }
+
+            MouseMove, BlockSize * Length, 0, 0, R
         }
         else
         {
@@ -108,9 +114,7 @@ FillRectangle(Width, Height, StartClass)
 
     Loop %Height%
     {
-        CurrentClass := GetClass()
-
-        If (CurrentClass != StartClass)
+        If (GetClass() != StartClass)
         {
             Return false
         }
