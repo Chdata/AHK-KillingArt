@@ -24,7 +24,7 @@ Click up
 TryReload()
 Return
 
-9::
+!d::
 BlockInput MouseMove
 MouseGetPos, mX, mY
 
