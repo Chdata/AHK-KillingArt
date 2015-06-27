@@ -38,39 +38,3 @@ TryReload()
   Else
     ExitApp
 }
-
-
-
-
-/*
-;This is what the program used to be
-
-Inc := 0
-MouseGetPos, sX, sY
-MouseClickDrag, L, sX, sY-128, sX, sY+128
-MouseClickDrag, L, sX-128, sY, sX+128, sY
-
-Ramp(-128, sX, sY, 1)
-Ramp( 128, sX, sY, 0)
-Ramp(-128, sX, sY, 0)
-Ramp( 128, sX, sY, 1)
-
-MouseMove, sX, sY
-Return
-
-Ramp(x, sX, sY, flag)
-{
-	Loop, 8
-	{
-		If (flag)
-			MouseClickDrag, L, sX, sY+x+Inc, sX+Inc, sY
-		Else
-			MouseClickDrag, L, sX, sY+x+Inc, sX-Inc, sY
-		If x < 0
-			Inc += 16
-		Else
-			Inc -= 16
-	}
-	Inc := 0
-}
-*/
