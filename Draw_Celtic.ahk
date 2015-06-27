@@ -1,3 +1,8 @@
+;Celtic knot drawer
+;Draw_Celtic.ahk
+;By: Chdata
+;2013
+
 ;8x8
 ;each square is a 4x4 grid of 16/2 pixels each (64/2 pixels)
 ;each 512/2 pixels in size

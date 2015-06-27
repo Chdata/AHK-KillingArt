@@ -1,3 +1,8 @@
+;Ellipse mouse mover
+;Draw_Ellipse.ahk
+;By: Wicked
+;9/12/10
+
 #SingleInstance, Force
 ;SetMouseDelay, 0
 Esc::TryReload()

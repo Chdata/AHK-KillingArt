@@ -1,5 +1,10 @@
-SetMouseDelay -1
-SetBatchLines -1
+;Space Invader drawer
+;Draw_Space_Invader.ahk
+;By: Tora
+;2012
+
+;SetMouseDelay -1
+;SetBatchLines -1
 Esc::TryReload()
 Return
 !d::

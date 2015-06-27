@@ -1,3 +1,8 @@
+;Circle drawer
+;http://www.autohotkey.com/board/topic/40489-mousemovementconsistent-circles/#entry253074
+;By: VxE
+;5/7/2009
+
 #SingleInstance, Force
 ;SetMouseDelay, 0
 Esc::TryReload()

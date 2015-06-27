@@ -1,3 +1,8 @@
+;Uboa drawer
+;Draw_Uboa.ahk
+;By: Tora
+;2012
+
 SetMouseDelay, 1
 Esc::TryReload()
 Return

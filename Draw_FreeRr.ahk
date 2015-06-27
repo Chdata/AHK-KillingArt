@@ -1,3 +1,8 @@
+;Free Rider slope drawer
+;Draw_FreeRr.ahk
+;By: Chdata
+;2013
+
 #SingleInstance, Force
 SetMouseDelay, 1
 CoordMode, Mouse, Screen

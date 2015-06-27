@@ -1,3 +1,8 @@
+;Spiral drawer
+;Draw_Spiral.ahk
+;By: Chdata
+;2012
+
 #SingleInstance, Force
 SetMouseDelay, 1        ;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen

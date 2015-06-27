@@ -1,3 +1,8 @@
+;Star drawer
+;Draw_Niichts.ahk
+;By: Chdata
+;2013
+
 #SingleInstance, Force
 SetMouseDelay, 1
 CoordMode, Mouse, Screen

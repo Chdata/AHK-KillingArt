@@ -1,3 +1,8 @@
+;Spiral Screensaver
+;Draw_Spiral_Show.ahk
+;By: Chdata
+;2013
+
 #SingleInstance, Force
 SetMouseDelay, 2        ;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen
