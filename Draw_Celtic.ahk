@@ -5,8 +5,8 @@
 ;Honestly the way I made this just looks stupid now
 
 #SingleInstance, Force
-SetMouseDelay 4
-Esc::Reload
+SetMouseDelay, 2
+Esc::TryReload()
 Return
 
 !d::
@@ -308,3 +308,11 @@ MouseClickDrag, L, zX, zY, zX+offsX, zY+offsy
 ;For large <> angles
 ;D  = 64*d
 ;D2 = -32*d upwards slant, 32*d downwards slant
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
+}

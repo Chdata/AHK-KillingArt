@@ -3,7 +3,7 @@ SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
 Click up
-Reload
+TryReload()
 Return
 
 !d::
@@ -39,3 +39,11 @@ Click up
 MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
 Return
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
+}

@@ -3,7 +3,7 @@ SetMouseDelay, 1		;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen
 Esc::
 Click up
-Reload
+TryReload()
 Return
 
 !d::
@@ -50,3 +50,11 @@ Return
 !v::
 MsgBox, 0x00, Input Log, Theta input: %Offset%`nRadius input: %Radius%
 Return
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
+}

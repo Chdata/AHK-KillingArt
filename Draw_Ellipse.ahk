@@ -1,6 +1,6 @@
 #SingleInstance, Force
-Esc::Reload
 ;SetMouseDelay, 0
+Esc::TryReload()
 CoordMode, Mouse, Screen
 SetBatchLines, -1
 Return
@@ -56,4 +56,12 @@ MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="") {
    MouseMove, %X2%, %Y2%, 0
    BlockInput, Off
    SetMouseDelay, % D
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }

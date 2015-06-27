@@ -1,6 +1,6 @@
 #SingleInstance, Force
-Esc::Reload
 ;SetMouseDelay, 0
+Esc::TryReload()
 Return
 
 $*Space::		; press space, then move the mouse, then release space
@@ -18,3 +18,11 @@ Loop, % slices := Ceil( (10/speed) * Dist := Sqrt(dx**2 + dy**2) )
    MouseMove, % BaseX + Dist * Cos(6.2831853*(A_Index / slices + offsetR))
    , % baseY - (!Clockwise*2-1) * Dist * Sin(6.2831853*(A_Index / slices + offsetR))
 Return
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
+}

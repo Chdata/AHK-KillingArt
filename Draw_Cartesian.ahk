@@ -21,7 +21,7 @@ SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
 Click up
-Reload
+TryReload()
 Return
 
 ;x:=t
@@ -112,4 +112,12 @@ Return 1/Cos(Theta)
 Cot(Theta)
 {
 Return 1/Tan(Theta)
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }

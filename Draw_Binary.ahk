@@ -1,6 +1,13 @@
+;Binary rectangle drawer
+;Draw_Binary.ahk
+;By: Tora
+;6/27/2015
+
+#SingleInstance, Force
 SetMouseDelay, 1
-Esc::Reload
+Esc::TryReload()
 Return
+
 !d::
 Uboa = 
 (
@@ -52,8 +59,15 @@ Invader =
 Draw(Invader, 10)
 Return
 
-Draw(Layout, Size)
+Draw(Layout, BlockSize)
 {
+  Class := GetClass()
+
+  If (Class == "Progman" || Class == "WorkerW")
+  {
+  Return
+  }
+
   BlockInput MouseMove
 
   Len := StrLen(Layout)
@@ -62,29 +76,32 @@ Draw(Layout, Size)
 
   While (Index < Len)
   {
-    Length := 1
-    Char := GetChar(Layout, Index)
+  Length := 1
+  Char := GetChar(Layout, Index)
 
-    if (Char == "1")
+  if (Char == "1")
+  {
+    While (GetChar(Layout, Index + Length) == "1")
     {
-      While (GetChar(Layout, Index + Length) == "1")
-      {
-        Length := Length + 1
-      }
-
-      FillRectangle(Length, Size)
-
-    }
-    else if (Char == "0")
-    {
-      MouseMove, Size, 0, 0, R
-    }
-    else
-    {
-      MouseMove, -(RowSize * Size), Size, 0, R
+    Length := Length + 1
     }
 
-    Index := Index + Length
+    if (!FillRectangle(Length, BlockSize))
+    {
+    Break
+    }
+
+  }
+  else if (Char == "0")
+  {
+    MouseMove, BlockSize, 0, 0, R
+  }
+  else
+  {
+    MouseMove, -(RowSize * BlockSize), BlockSize, 0, R
+  }
+
+  Index := Index + Length
   }
 
   BlockInput MouseMoveOff
@@ -92,22 +109,46 @@ Draw(Layout, Size)
 
 FillRectangle(Width, Height)
 {
+  StartClass := GetClass()
+
   MouseGetPos, mX, mY
   mY2 := mY
   mX2 := mX + Width * Height
 
   Loop %Height%
   {
-    MouseClickDrag, L, mX, mY, mX2, mY2
-    mY -= 1
-    mY2 -= 1
+  CurrentClass := GetClass()
+
+  If (CurrentClass != StartClass)
+  {
+    Return false
+  }
+
+  MouseClickDrag, L, mX, mY, mX2, mY2
+  mY -= 1
+  mY2 -= 1
   }
 
   MouseMove, 0, Height - 1, 0, R
-  Return
+  Return true
 }
 
 GetChar(String, Index)
 {
   return SubStr(String, Index, 1)
+}
+
+GetClass()
+{
+  MouseGetPos,,, Window
+  WinGetClass, Class, ahk_id %Window%
+  return Class
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }

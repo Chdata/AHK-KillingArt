@@ -1,6 +1,6 @@
 SetMouseDelay -1
 SetBatchLines -1
-Esc::Reload
+Esc::TryReload()
 Return
 !d::
 MouseGetPos, mX, mY
@@ -233,4 +233,12 @@ DrawSquare(mX, mY)
 	MouseClickDrag, L, mX, mY, mX-20, mY
 	MouseClickDrag, L, mX, mY, mX, mY+20
 	Return
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }

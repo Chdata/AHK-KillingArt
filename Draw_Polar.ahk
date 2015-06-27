@@ -26,7 +26,7 @@ G:=1
 Swish:=1
 Esc::
 Click up
-Reload
+TryReload()
 Return
 
 !d::
@@ -186,4 +186,12 @@ Return 1/Cos(Theta)
 Cot(Theta)
 {
 Return 1/Tan(Theta)
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }

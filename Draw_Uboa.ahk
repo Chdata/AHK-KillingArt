@@ -1,5 +1,5 @@
-SetMouseDelay, 0
-Esc::Reload
+SetMouseDelay, 1
+Esc::TryReload()
 Return
 !d::
 BlockInput MouseMove
@@ -418,4 +418,12 @@ FillSquare(mX, mY)
 		mY2 -= 5
 	}
 	Return
+}
+
+TryReload()
+{
+  IfExist, %A_ScriptFullPath%
+    Reload
+  Else
+    ExitApp
 }
