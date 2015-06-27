@@ -2,6 +2,7 @@ SetMouseDelay, 0
 Esc::Reload
 Return
 !d::
+BlockInput MouseMove
 MouseGetPos, mX, mY
 Loop 10 {
 	FillSquare(mX, mY)
@@ -404,6 +405,7 @@ Loop 12 {
 	FillSquare(mX, mY)
 	mX += 10
 }
+BlockInput MouseMoveOff
 Return
 
 FillSquare(mX, mY)

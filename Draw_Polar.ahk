@@ -11,18 +11,25 @@ Radisu:= 100
 ;(pi/180)
 dtr:=0.01745329252
 
+;pi
+pi:=3.14159265
+
 ;tau (2pi)
-pi2:=6.2831853
+tau:=6.2831853
 
 #SingleInstance, Force
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
+F:=1
+Switch:=1
+G:=1
+Swish:=1
 Esc::
 Click up
 Reload
 Return
 
-9::
+!d::
 MouseGetPos, xcenter, ycenter
 BlockInput MouseMove
 
@@ -86,6 +93,8 @@ BlockInput MouseMove
 ;r:=Radisu*Sin(Sec(2*A_Index*dtr))*-1*Sqrt(Sin(A_Index*dtr))	;Face
 ;r:=Radisu*Sin(Tan(2*A_Index*dtr))*-1*Sqrt(Sin(A_Index*dtr))	;Dragonfly
 ;r:=Radisu*Cos(Cos(2*A_Index*dtr))*-1*Sqrt(Sin(4*A_Index*dtr))	;Fan
+;r:=Radisu/(2-cos(A_Index*dtr))					;Ellipse
+;r:=Radisu/(1-2*cos(A_Index*dtr))					;Hyperbola
 
 ;http://en.wikipedia.org/wiki/Maurer_rose
 ;http://en.wikipedia.org/wiki/Lissajous_curve
@@ -96,27 +105,53 @@ BlockInput MouseMove
 ;http://en.wikipedia.org/wiki/Hypocycloid
 ;http://en.wikipedia.org/wiki/Epitrochoid
 
-Loop, 361
-		;First is skipped to prevent unwanted lines when r != 0 at the start
-		;We go one past 360 so we can reconnect to our starting point
-		;We click down on A_Index = 2 instead of 1 because A_Index starts at 1
+Loop, % 360 +2
 {
-	If A_Index = 2
-		Click down
-	r:=Radisu*( Sin(2*A_Index*dtr) + 0.25*sin(24*A_Index*dtr) )
+	B_Index:=A_Index-2
+	C_Index:=B_Index/100
+
+	r:=Radisu*Cos(Sin(2*A_Index*dtr))*-1*Sin(A_Index*dtr)
 	x:=r*Cos(A_Index*dtr)
 	y:=r*Sin(A_Index*dtr)
-	mx:=Round(xcenter+x)
-	my:=Round(ycenter+y)
-	If r =					;This is necessary for graphs that use Square roots
-		MouseMove, xcenter, ycenter	;If we try to graph the square root of a negative (For example, cos(180)) it doesn't work correctly
+	If Switch
+		mx:=Round(xcenter+x)
 	Else
+		mx:=Round(xcenter+A_Index)
+	If Swish
+		my:=Round(ycenter+y)
+	Else
+		my:=Round(ycenter+A_Index)
+
+	If r =
+		Click up	;MouseMove, xcenter, ycenter ;was better imo
+		;Complex:=0
+	Else
+	{
 		MouseMove, mx, my
+		;If Complex != 1 ;Complex:=1 ;Click down
+		Click down
+	}
+
+	;This is necessary for graphs that use Square roots
+	;If we try to graph the square root of a negative (For example, cos(180)) it doesn't work correctly
+
+	If C_Index = 0 && r !=		;It is redundant to check if C_Index is 0. We can start anywhere if we just check if it is real
+		Click down
 }
 Click up
 
 MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
+Return
+
+!h::
+F++
+Switch:=Mod(F,2)
+Return
+
+!v::
+G++
+Swish:=Mod(G,2)
 Return
 
 Sgn(Val)	;Returns the sign of the value

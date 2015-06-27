@@ -1,5 +1,5 @@
 #SingleInstance, Force
-SetMouseDelay, 1		;Never set this to 0 or it will lol at you
+SetMouseDelay, 2		;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen
 Esc::
 Click up
