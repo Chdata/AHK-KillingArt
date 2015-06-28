@@ -90,7 +90,7 @@ PreventDesktopUsage()
 {
     Class := GetClass()
 
-    If (Class == "Progman" || Class == "WorkerW")
+    If (Class == "Progman" || Class == "WorkerW" || Class == "CabinetWClass")
     {
         TryReload()
     }
