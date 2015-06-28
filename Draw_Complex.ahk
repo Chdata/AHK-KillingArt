@@ -28,9 +28,9 @@ Return
 BlockInput MouseMove
 MouseGetPos, mX, mY
 
-a:=-2
-b:=-2
-stillDrawing:=true
+a := -2.0
+b := -2.0
+stillDrawing := true
 
 StartClass := GetClass()
 PreventDesktopUsage()
@@ -87,7 +87,8 @@ line(ex,wy,endX,endY)
 {
     global StartClass
 
-    If (WinGetAtCoords(ex, wy) != StartClass)
+    MouseMove, ex, wy
+    If (GetClass() != StartClass)
     {
         Return false
     }
