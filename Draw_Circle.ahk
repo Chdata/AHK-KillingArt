@@ -3,7 +3,7 @@
 ;By: VxE
 ;5/7/2009
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 ;SetMouseDelay, 0
 Esc::TryReload()
 Return
@@ -20,14 +20,8 @@ dy := (-offsetY + baseY) * (!Clockwise*2-1)
 offsetR := (dx = 0) ? (0.25+(dy>0)/2) : (ATan(dy/dx)/6.2831853+(dx<0)/2+(dx>0 && dy<0))
 SetBatchLines, -1
 Loop, % slices := Ceil( (10/speed) * Dist := Sqrt(dx**2 + dy**2) )
+{
    MouseMove, % BaseX + Dist * Cos(6.2831853*(A_Index / slices + offsetR))
    , % baseY - (!Clockwise*2-1) * Dist * Sin(6.2831853*(A_Index / slices + offsetR))
-Return
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
 }
+Return

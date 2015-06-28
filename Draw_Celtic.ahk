@@ -9,7 +9,7 @@
 
 ;Honestly the way I made this just looks stupid now
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 2
 Esc::TryReload()
 Return
@@ -311,11 +311,3 @@ Line(mX,mY,coordX,coordY,offsX,offsy)
 ;For large <> angles
 ;D  = 64*d
 ;D2 = -32*d upwards slant, 32*d downwards slant
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
-}

@@ -3,7 +3,7 @@
 ;By: Chdata
 ;2012
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1        ;Never set this to 0 or it will lol at you
 CoordMode, Mouse, Screen
 Esc::
@@ -55,11 +55,3 @@ Return
 !v::
 MsgBox, 0x00, Input Log, Theta input: %Offset%`nRadius input: %Radius%
 Return
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
-}

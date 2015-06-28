@@ -3,7 +3,7 @@
 ;By: Chdata
 ;2013
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
@@ -33,18 +33,10 @@ Loop, % Pnt + 1         ;x points to connect (In this case, 5 for a 5 pointed st
     mx:=Round(xcenter+x)
     my:=Round(ycenter+y)
     MouseMove, mx, my
-    Theta+=(Nxt * (360 / Pnt)) * (3.14159265 / 180)
+    Theta+=(Nxt * (360 / Pnt)) * dtr
 }
 Click up
 
 MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
 Return
-
-TryReload()
-{
-        IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
-}

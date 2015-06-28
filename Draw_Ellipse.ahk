@@ -3,7 +3,7 @@
 ;By: Wicked
 ;9/12/10
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 ;SetMouseDelay, 0
 Esc::TryReload()
 CoordMode, Mouse, Screen
@@ -71,12 +71,4 @@ MouseMove_Ellipse(X1, Y1, X2, Y2, S=1, M=0, I="")
     MouseMove, %X2%, %Y2%, 0
     BlockInput, Off
     SetMouseDelay, % D
-}
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
 }

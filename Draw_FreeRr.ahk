@@ -3,7 +3,7 @@
 ;By: Chdata
 ;2013
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
@@ -34,12 +34,4 @@ fy:=A_Index > 2 ? 1 : -1
 }
 MouseMove, x, y
 BlockInput MouseMoveOff
-}
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
 }

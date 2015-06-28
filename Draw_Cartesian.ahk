@@ -3,26 +3,16 @@
 ;By: Chdata
 ;2/28/2013
 
-;Maximum radius (May not always really be the radius)
-Radisu:= 100
-
-;Degrees to radians
-;(pi/180)
-dtr:=0.01745329252
-
-;pi
-pi:=3.14159265
-
-;tau (2pi)
-tau:=6.2831853
-
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
 Click up
 TryReload()
 Return
+
+;Maximum radius (May not always really be the radius)
+Radisu:= 100
 
 ;x:=t
 ;y:=t**5-3*t**3+2*t
@@ -79,44 +69,3 @@ Click up
 MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
 Return
-
-Sgn(Val)	;Returns the sign of the value
-{
-Return, x < 0 ? -1 : x > 0 ? 1 : 0
-;Return, x < 0 ? -1 : !!x		;This one's actually slower than the above operation, but I like it more
-}
-
-aRoot(Val)
-{
-	Return Sgn(Val)*Sqrt(Abs(Val))
-}
-
-/*
-Abs(Val)
-{
-	Return Sgn(Val)*Val
-}
-*/
-
-Csc(Theta)
-{
-	Return 1/Sin(Theta)
-}
-
-Sec(Theta)
-{
-	Return 1/Cos(Theta)
-}
-
-Cot(Theta)
-{
-	Return 1/Tan(Theta)
-}
-
-TryReload()
-{
-	IfExist, %A_ScriptFullPath%
-		Reload
-	Else
-    	ExitApp
-}

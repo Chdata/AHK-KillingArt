@@ -16,7 +16,7 @@ z^2+C=(x+yi)*(x+yi)+a+bi
     =(x^2-y^2+a)+i(2xy+b)
 */
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
@@ -151,54 +151,5 @@ draw()
             }
             Length:=0
         }
-    }
-}
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
-}
-
-GetClass()
-{
-    MouseGetPos,,, Window
-    WinGetClass, Class, ahk_id %Window%
-    return Class
-}
-
-PreventDesktopUsage()
-{
-    Class := GetClass()
-
-    If (Class == "Progman" || Class == "WorkerW")
-    {
-        TryReload()
-    }
-}
-
-; http://www.autohotkey.com/forum/viewtopic.php?p=341120#341120
-; http://www.autohotkey.com/board/topic/98662-get-window-under-a-certain-xy-position
-WinGetAtCoords(x,y,what="Class")
-{     ; by SKAN and Learning one
-    ; Returns Title/ID/Class/PID of window at given coordinates 
-    WinID := DllCall( "GetAncestor", UInt      ; by SKAN
-           ,DllCall( "WindowFromPoint", Int,X, Int,Y )
-           , UInt, GA_ROOT := 2)
-    if (what = "Title" or what = "T") {
-        WinGetTitle, WinTitle, ahk_id %WinID%
-        Return WinTitle
-    }
-    else if (what = "ID" or what = "I")
-        Return WinID
-    else if (what = "Class" or what = "C") {
-        WinGetClass, WinClass, ahk_id %WinID%
-        Return WinClass
-    }
-    else if (what = "PID" or what = "P") {
-        WinGet, WinPID, PID, ahk_id %WinID%
-        Return WinPID
     }
 }

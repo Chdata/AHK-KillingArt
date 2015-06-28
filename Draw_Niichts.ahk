@@ -3,7 +3,7 @@
 ;By: Chdata
 ;2013
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 CoordMode, Mouse, Screen
 Esc::
@@ -14,10 +14,6 @@ Return
 !d::
 MouseGetPos, xcenter, ycenter
 BlockInput MouseMove
-
-;Degrees to radians
-;(pi/180)
-dtr:=0.01745329252
 
 Pnt:=7      ;Points on star
 Rad:=50     ;Radius
@@ -44,11 +40,3 @@ Click up
 MouseMove, xcenter, ycenter
 BlockInput MouseMoveOff
 Return
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
-}

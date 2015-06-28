@@ -3,7 +3,7 @@
 ;By: Tora
 ;6/27/2015
 
-#SingleInstance, Force
+#include ./Inc_KillingArt.ahk
 SetMouseDelay, 1
 Esc::TryReload()
 Return
@@ -131,29 +131,4 @@ FillRectangle(Width, Height, StartClass)
 GetChar(String, Index)
 {
     return SubStr(String, Index, 1)
-}
-
-GetClass()
-{
-    MouseGetPos,,, Window
-    WinGetClass, Class, ahk_id %Window%
-    return Class
-}
-
-PreventDesktopUsage()
-{
-    Class := GetClass()
-
-    If (Class == "Progman" || Class == "WorkerW")
-    {
-        TryReload()
-    }
-}
-
-TryReload()
-{
-    IfExist, %A_ScriptFullPath%
-        Reload
-    Else
-        ExitApp
 }
